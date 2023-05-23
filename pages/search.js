@@ -5,6 +5,7 @@ import Link from "next/link";
 const Search = () => {
   const [pickup, setPickup] = useState("");
   const [dropoff, setDropoff] = useState("");
+  const [click, setClick] = useState(false)
 
   return (
     <Wrapper>
@@ -44,6 +45,7 @@ const Search = () => {
         <StarIcon src="https://img.icons8.com/ios-filled/50/ffffff/star--v1.png" />
         Saved Places
       </SavedPlaces>
+      {pickup.length>1 && dropoff.length>1?
       <Link
         href={{
           pathname: "/confirm",
@@ -54,7 +56,17 @@ const Search = () => {
         }}
       >
         <ConfirmButtonContainer>Confirm Location</ConfirmButtonContainer>
-      </Link>
+      </Link>: <Link
+        href={{
+          pathname: "/search",
+          query: {
+            pickup: pickup,
+            dropoff: dropoff,
+          },
+        }}
+      >
+        <ConfirmButtonContainer>Confirm Location</ConfirmButtonContainer>
+      </Link>}
     </Wrapper>
   );
 };

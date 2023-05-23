@@ -41,7 +41,7 @@ const RideSelector = (props) => {
               <Details>{car.details}</Details>
             </CarDetails>
             <CarPrice>
-              ${((duration / 100) * car.multiplier).toFixed(2)}
+            ₵{((duration / 100) * car.multiplier).toFixed(2)}
             </CarPrice>
           </Car>
         ))}

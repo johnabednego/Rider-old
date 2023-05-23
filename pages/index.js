@@ -27,88 +27,67 @@ export default function Home() {
   }, []);
 
   return (
-    <Wrapper>
+    <div className="flex flex-col h-screen">
       <Map />
-      <ActionItems>
-        <Header>
-          <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
-          <Profile>
-            <Name>{user && user.name}</Name>
-            <UserImageContainer>
+      <div className="flex-1 p-4 select-none">
+        <div className="flex flex-col sm:flex-row justify-between items-center">
+          <div
+            className=" w-[90px]  rounded-full"
+            style={{ width: "100px", borderRadius: "100%", overflow: "hidden" }}
+          >
+            <LogoImage src="/imgs/rider.png" alt="logo" />
+          </div>
+          <div className="flex w-full justify-between sm:justify-end ">
+            <div className="w-50 mr-2 text-sm flex nowrap font-bold mt-3 uppercase">
+              {user && user.name}
+            </div>
+            <UserImageContainer  onClick={() => signOut(auth)}>
+              {user?.photoUrl.length>1?
               <UserImage
                 src={user && user.photoUrl}
-                onClick={() => signOut(auth)}
+              ></UserImage>:
+              <UserImage
+                src="/imgs/profile.png"
               ></UserImage>
+              }
               <UserLogOut>Log Out</UserLogOut>
             </UserImageContainer>
-          </Profile>
-        </Header>
-        <ActionButtons>
+          </div>
+        </div>
+        <div className=" mobile flex">
           <Link href="/search">
-            <ActionButton>
-              <ActionButtonImage src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Moto_v1.png" />
+            <div className="h-32 bg-green-200 m-1 flex-1 flex flex-col items-center rounded-lg justify-center text-xl font-medium cursor-pointer">
+              <ActionButtonImage src="/imgs/car.png" />
               Ride
-            </ActionButton>
+            </div>
           </Link>
           <Link href="/search">
-            <ActionButton>
-              <ActionButtonImage src="https://i.ibb.co/n776JLm/bike.png" />
-              Wheels
-            </ActionButton>
+            <div className="h-32 bg-gray-200 m-1 flex-1 flex flex-col items-center rounded-lg justify-center text-xl font-medium cursor-pointer">
+              <ActionButtonImage src="/imgs/package.png" />
+              Package
+            </div>
           </Link>
           <Link href="/search">
-            <ActionButton>
+            <div className="h-32 bg-gray-200 m-1 flex-1 flex flex-col items-center rounded-lg justify-center text-xl font-medium cursor-pointer">
               <ActionButtonImage src="https://i.ibb.co/5RjchBg/uberschedule.png" />
               Reserve
-            </ActionButton>
+            </div>
           </Link>
-        </ActionButtons>
+        </div>
         <Link href="/search">
           <InputButton>Where to?</InputButton>
         </Link>
-      </ActionItems>
-    </Wrapper>
+      </div>
+    </div>
   );
 }
-
-const Wrapper = tw.div`
-flex flex-col h-screen
-`;
-
-const ActionItems = tw.div`
-flex-1 p-4 select-none
-`;
-
-const Header = tw.div`
-flex justify-between items-center
-`;
-
-const ActionButtons = tw.div`
-flex
-`;
-
-const UberLogo = tw.img`
-h-28
-`;
-
-const Profile = tw.div`
-flex 
-`;
-
-const Name = tw.div`
-w-50 mr-2 text-sm flex nowrap font-bold mt-3 uppercase
-`;
 
 const UserImage = tw.img`
 h-12 w-12 rounded-full border border-gray-200 p-px cursor-pointer
 `;
 
-const ActionButton = tw.div`
-h-32 bg-gray-200 m-1 flex-1 flex flex-col items-center rounded-lg justify-center text-xl font-medium cursor-pointer
-`;
-
 const ActionButtonImage = tw.img`
-h-3/5
+h-3/5 mobileImage
 `;
 
 const InputButton = tw.div`
@@ -116,9 +95,12 @@ const InputButton = tw.div`
 `;
 
 const UserImageContainer = tw.button`
-  none opacity-none hover:flex ease-in-out
+  none opacity-none hover:flex ease-in-out cursor-pointer
 `;
 
 const UserLogOut = tw.p`
   text-sm text-gray-500 none hover:text-black
+`;
+const LogoImage = tw.img`
+h-full w-full rounded-full
 `;

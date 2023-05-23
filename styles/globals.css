@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+@media(max-width:350px){
+  .mobile{
+    display: flex;
+    flex-direction: column;
+  }
+  .mobileImage{
+    height: 100px;
+  }
+}

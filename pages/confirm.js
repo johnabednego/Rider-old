@@ -22,15 +22,27 @@ const Confirm = () => {
         new URLSearchParams({
           access_token:
             "pk.eyJ1IjoiaGFtemF6YWlkaSIsImEiOiJja3ZtY3RodzgwNGdlMzBwaWdjNWx5cTQ3In0.2s32bZnlSY-Qg5PFmoLrJw",
-          limit: 1,
-          limit: 1,
+            limit:100,
+            
         })
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setpickupCoordinates(data.features[0].center);
+        
+       const status = data.features.map(item=>{
+          if(item.place_name.toLowerCase().includes("ghana")){
+            setpickupCoordinates(item.center);
+              return true
+          }
+         })
+    if(status===true){
+
+    }else{
+      setpickupCoordinates(data.features[0].center)
+    }
+       
       });
   };
 
@@ -41,14 +53,26 @@ const Confirm = () => {
         new URLSearchParams({
           access_token:
             "pk.eyJ1IjoiaGFtemF6YWlkaSIsImEiOiJja3ZtY3RodzgwNGdlMzBwaWdjNWx5cTQ3In0.2s32bZnlSY-Qg5PFmoLrJw",
-          limit: 1,
+          limit: 100,
         })
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        setDropoffCoordinates(data.features[0].center);
+        const status = data.features.map(item=>{
+          if(item.place_name.toLowerCase().includes("ghana")){
+            setDropoffCoordinates(item.center);
+            return true
+          }
+         })
+
+         if(status===true){
+
+         }else{
+          setDropoffCoordinates(data.features[0].center)
+         }
+            
       });
   };
 
@@ -77,7 +101,7 @@ const Confirm = () => {
         />
         <ConfirmButtonContainer>
           <Link href="/ride">
-            <ConfirmButton>Confirm Mini</ConfirmButton>
+            <ConfirmButton>Confirm Location</ConfirmButton>
           </Link>
         </ConfirmButtonContainer>
       </ConfirmRideContainer>
