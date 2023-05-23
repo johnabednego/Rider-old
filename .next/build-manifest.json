@@ -30,15 +30,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/captain": [
+    "/confirm": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/captain.js"
+      "static/chunks/pages/confirm.js"
     ],
-    "/ride": [
+    "/search": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/ride.js"
+      "static/chunks/pages/search.js"
     ]
   },
   "ampFirstPages": []

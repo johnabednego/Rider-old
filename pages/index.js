@@ -17,7 +17,6 @@ export default function Home() {
           name: user.displayName,
           photoUrl: user.photoURL,
         });
-        console.log(user);
       } else {
         router.push("/login");
       }
