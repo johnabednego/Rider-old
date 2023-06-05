@@ -8,7 +8,7 @@ export const carList = [
   },
   {
     imgUrl: 'https://i.ibb.co/cyvcpfF/uberx.png',
-    service: 'UberGo',
+    service: 'RiderGo',
     multiplier: 2,
     details: "Everyday rides with AC",
     time: "30 min away"
